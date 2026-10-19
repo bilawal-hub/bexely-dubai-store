@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Discover bags, wallets and accessories at Bexley Dubai. Explore the collection and message us to order.">
+  <title>Bexley Dubai | The Art of Everyday Luxury</title>
+  <style>
+    :root { --bg:#090909; --panel:#11100e; --gold:#c9a85d; --gold-light:#e7d39a; --cream:#f7f1e6; --muted:#b9b1a3; --line:#453820; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--cream); font-family:Arial, Helvetica, sans-serif; line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1120px, 90%); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(9,9,9,.94); border-bottom:1px solid #292318; backdrop-filter:blur(12px); }
+    .nav { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .monogram { width:42px; height:42px; border:1px solid var(--gold); display:grid; place-items:center; color:var(--gold-light); font-family:Georgia,serif; font-size:19px; letter-spacing:-2px; }
+    .brand-name { color:var(--gold-light); font-family:Georgia,serif; letter-spacing:2px; font-size:16px; }
+    .brand-sub { color:var(--muted); font-size:9px; letter-spacing:2px; }
+    nav { display:flex; gap:25px; align-items:center; font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+    nav a:hover, .text-link:hover { color:var(--gold-light); }
+    .nav-cta, .btn { display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--gold); padding:12px 19px; font-size:11px; font-weight:bold; letter-spacing:1.4px; text-transform:uppercase; transition:.2s; }
+    .nav-cta, .btn.gold { background:var(--gold); color:#111; }
+    .nav-cta:hover, .btn.gold:hover { background:var(--gold-light); }
+    .btn:hover { background:var(--gold); color:#111; }
+    .hero { min-height:620px; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:45px; padding:72px 0 82px; }
+    .eyebrow { color:var(--gold-light); font-size:10px; letter-spacing:3px; text-transform:uppercase; }
+    h1,h2,h3 { font-family:Georgia,'Times New Roman',serif; font-weight:normal; line-height:1.12; }
+    h1 { font-size:clamp(44px,6vw,76px); margin:20px 0; letter-spacing:-1.7px; }
+    h1 em { color:var(--gold-light); font-weight:normal; }
+    .hero p { max-width:470px; color:var(--muted); font-size:15px; margin:0 0 28px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-art { position:relative; min-height:440px; overflow:hidden; border:1px solid var(--line); background:radial-gradient(ellipse at 50% 35%,#3a3020 0,#17140f 35%,#0d0c0a 72%); display:flex; align-items:center; justify-content:center; }
+    .hero-art:before { content:""; position:absolute; width:260px; height:350px; border:1px solid rgba(201,168,93,.48); border-radius:50%; transform:rotate(27deg); }
+    .hero-art:after { content:"B"; position:absolute; font-family:Georgia,serif; font-size:280px; line-height:1; color:rgba(201,168,93,.08); }
+    .bag { position:relative; z-index:1; width:225px; height:190px; background:linear-gradient(130deg,#302d29,#080808 60%,#25211a); border:2px solid #8e713b; border-radius:18px 18px 35px 35px; box-shadow:0 30px 55px #000; transform:rotate(-5deg); }
+    .bag:before { content:""; position:absolute; width:112px; height:90px; border:7px solid #9b7c43; border-bottom:0; border-radius:70px 70px 0 0; left:50%; top:-82px; transform:translateX(-50%); }
+    .bag:after { content:"BD"; position:absolute; top:70px; left:0; right:0; text-align:center; color:var(--gold-light); font-family:Georgia,serif; letter-spacing:3px; font-size:23px; }
+    .art-caption { position:absolute; bottom:18px; left:18px; right:18px; display:flex; justify-content:space-between; color:var(--gold-light); font-size:9px; letter-spacing:2px; text-transform:uppercase; }
+    section { padding:80px 0; }
+    .section-head { text-align:center; max-width:620px; margin:0 auto 38px; }
+    h2 { font-size:clamp(32px,4vw,48px); margin:12px 0; }
+    .section-head p, .about p { color:var(--muted); font-size:14px; }
+    .products { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .product { background:var(--panel); border:1px solid #29251d; padding:12px; }
+    .product-art { height:240px; position:relative; display:grid; place-items:center; overflow:hidden; background:radial-gradient(ellipse at center,#30271a 0,#17140f 45%,#0b0b0a 80%); }
+    .product-art .shape { position:relative; width:135px; height:125px; border:1px solid #8f713b; background:linear-gradient(135deg,#262421,#070707 70%); box-shadow:0 18px 24px #000; }
+    .product-art.bag-art .shape { border-radius:12px 12px 22px 22px; }
+    .product-art.bag-art .shape:before { content:""; position:absolute; width:62px; height:48px; border:5px solid #8f713b; border-bottom:0; border-radius:40px 40px 0 0; top:-45px; left:31px; }
+    .product-art.wallet-art .shape { height:88px; border-radius:7px; }
+    .product-art.wallet-art .shape:after { content:""; position:absolute; top:43px; left:0; right:0; border-top:1px solid #8f713b; }
+    .product-art.accessory-art .shape { width:100px; height:100px; border-radius:50%; border:7px double #9c8048; background:transparent; }
+    .product-art .shape:after { content:"BD"; position:absolute; top:45%; width:100%; text-align:center; color:var(--gold-light); font:16px Georgia,serif; letter-spacing:2px; }
+    .product h3 { font-size:23px; margin:18px 4px 4px; }
+    .product p { color:var(--muted); font-size:12px; margin:0 4px 18px; }
+    .text-link { color:var(--gold-light); font-size:10px; letter-spacing:1.5px; text-transform:uppercase; margin:4px; display:inline-block; }
+    .about-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:55px; align-items:center; }
+    .about-mark { min-height:300px; border:1px solid var(--line); display:grid; place-items:center; background:radial-gradient(ellipse,#282115,#0b0b0a 70%); }
+    .about-mark span { font:clamp(90px,15vw,160px) Georgia,serif; letter-spacing:-14px; color:var(--gold); }
+    .about h2 { margin-top:14px; }
+    .values { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .values span { border:1px solid var(--line); padding:8px 11px; color:var(--gold-light); font-size:10px; letter-spacing:1px; text-transform:uppercase; }
+    .contact { background:linear-gradient(130deg,#17130c,#0b0b0a 65%); border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center; }
+    .contact p { color:var(--muted); max-width:530px; margin:0 auto 25px; }
+    footer { padding:28px 0; color:#8e877b; font-size:11px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    .socials { display:flex; gap:18px; }
+    .note { color:#7e776b; font-size:10px; margin-top:16px; }
+    @media (max-width:760px) {
+      .nav { min-height:68px; }
+      nav { gap:12px; font-size:10px; }
+      nav .optional { display:none; }
+      .nav-cta { padding:10px 11px; font-size:9px; }
+      .hero { grid-template-columns:1fr; gap:30px; padding:55px 0 60px; min-height:auto; }
+      .hero-copy { text-align:center; }
+      .hero p { margin-left:auto; margin-right:auto; }
+      .actions { justify-content:center; }
+      .hero-art { min-height:350px; }
+      section { padding:60px 0; }
+      .products { grid-template-columns:1fr; max-width:430px; margin:auto; }
+      .product-art { height:250px; }
+      .about-grid { grid-template-columns:1fr; gap:28px; }
+      .about-mark { min-height:230px; }
+    }
+    @media (max-width:390px) { .brand-name { font-size:13px; } .brand-sub { font-size:8px; letter-spacing:1px; } nav { gap:8px; } }
+  </style>
+</head>
+<body>
+  <!-- Contact links customized for Bexley Dubai. Illustrative product artwork retained. -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Bexley Dubai home">
+        <div class="monogram">BD</div>
+        <div><div class="brand-name">BEXLEY DUBAI</div><div class="brand-sub">THE ART OF EVERYDAY LUXURY</div></div>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#collection">Collection</a>
+        <a class="optional" href="#story">Our Story</a>
+        <a class="nav-cta" href="#contact">Shop / Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow">Timeless style · Modern elegance</div>
+        <h1>Luxury in<br><em>Every Detail.</em></h1>
+        <p>Discover bags, wallets and accessories selected to bring a refined touch to your everyday style.</p>
+        <div class="actions">
+          <a class="btn gold" href="#collection">Explore Collection</a>
+          <a class="btn" href="#contact">Message to Order</a>
+        </div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Stylized black luxury handbag illustration with gold details">
+        <div class="bag"></div>
+        <div class="art-caption"><span>Bexley Dubai</span><span>Style with distinction</span></div>
+      </div>
+    </section>
+
+    <section id="collection">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Curated essentials</div>
+          <h2>The Collection</h2>
+          <p>Explore the pieces that complete your look. Message us for current designs, prices and availability.</p>
+        </div>
+        <div class="products">
+          <article class="product">
+            <div class="product-art bag-art"><div class="shape"></div></div>
+            <h3>Signature Bags</h3>
+            <p>Statement pieces for everyday elegance.</p>
+            <a class="text-link order-link" href="#contact" data-product="Signature Bags">Ask about bags ↗</a>
+          </article>
+          <article class="product">
+            <div class="product-art wallet-art"><div class="shape"></div></div>
+            <h3>Fine Wallets</h3>
+            <p>Refined essentials with a timeless feel.</p>
+            <a class="text-link order-link" href="#contact" data-product="Fine Wallets">Ask about wallets ↗</a>
+          </article>
+          <article class="product">
+            <div class="product-art accessory-art"><div class="shape"></div></div>
+            <h3>Luxury Accessories</h3>
+            <p>Finishing touches for your personal style.</p>
+            <a class="text-link order-link" href="#contact" data-product="Luxury Accessories">Ask about accessories ↗</a>
+          </article>
+        </div>
+        <p class="note" style="text-align:center">Illustrative artwork is used in this starter design. Replace it with clear photos of your actual products before taking orders.</p>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="wrap about-grid">
+        <div class="about-mark" aria-label="Bexley Dubai monogram"><span>BD</span></div>
+        <div class="about">
+          <div class="eyebrow">The Bexley touch</div>
+          <h2>Quiet confidence.<br>Distinctive style.</h2>
+          <p>BEXLEY DUBAI brings bags, wallets and accessories together in one carefully presented collection. Browse the latest pieces, ask us about availability, and order directly through your preferred messaging channel.</p>
+          <div class="values"><span>Considered style</span><span>Personal service</span><span>Easy enquiries</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="eyebrow">Your next favourite piece</div>
+        <h2>Let's Find Your Style.</h2>
+        <p>Ask about product details, current availability, delivery options and payment methods. We'll help you with the next steps.</p>
+        <div class="actions" style="justify-content:center">
+          <!-- WhatsApp contact configured with Pakistan country code. -->
+          <a class="btn gold" id="whatsappBtn" href="https://wa.me/923236110350?text=Hello%20Bexley%20Dubai%2C%20I%27d%20like%20to%20ask%20about%20your%20collection." target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <!-- Instagram contact configured. -->
+          <a class="btn" id="instagramBtn" href="https://instagram.com/BexleyDubai" target="_blank" rel="noopener">Instagram DM</a>
+        </div>
+        <p class="note">Please check product details, prices, delivery terms and payment options with us before ordering.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> BEXLEY DUBAI. All rights reserved.</span>
+      <div class="socials"><a href="#collection">Collection</a><a href="#contact">Contact</a></div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.order-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        var product = link.getAttribute('data-product');
+        var wa = document.getElementById('whatsappBtn');
+        if (!wa.href.includes('YOUR_WHATSAPP_NUMBER')) {
+          wa.href = 'https://wa.me/' + wa.href.split('wa.me/')[1].split('?')[0] + '?text=' + encodeURIComponent('Hello Bexley Dubai, I would like to ask about ' + product + '.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
